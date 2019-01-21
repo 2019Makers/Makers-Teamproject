@@ -1,3 +1,0 @@
-½ÂÇö
-
-for project
