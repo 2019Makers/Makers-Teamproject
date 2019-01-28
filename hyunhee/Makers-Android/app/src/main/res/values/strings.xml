@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Makers-Android</string>
+
+    <string name="click_left">LeftClick</string>
+    <string name="click_right">RightClick</string>
+    <string name="move_mouse">MoveMouse:</string>
 </resources>

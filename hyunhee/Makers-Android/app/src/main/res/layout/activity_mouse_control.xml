@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MouseControlActivity">
+
+    <View
+        android:id="@+id/mouse_pad_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="#cda2f3" />
+    />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mouse_left_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="LEFT" />
+
+        <Button
+            android:id="@+id/mouse_right_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="RIGHT" />
+    </LinearLayout>
+
+</LinearLayout>
