@@ -11,8 +11,8 @@
 
     <TextView
         android:id="@+id/mousePad"
-        android:layout_width="358dp"
-        android:layout_height="429dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_above="@+id/playPauseButton"
         android:background="@android:color/holo_blue_dark"
         android:clickable="true" />

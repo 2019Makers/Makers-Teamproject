@@ -16,6 +16,7 @@ import  java.net.InetSocketAddress ;
 import  java.net.ServerSocket ;
 import  java.net.Socket ;
 
+
 public class RemoteDroidServer {
 	
 	private static ServerSocket server = null;
@@ -50,6 +51,7 @@ public class RemoteDroidServer {
 			line = in.readLine(); // 클라이언트로부터 입력을 읽는다.
 			System.out.println(line); // 우리가 클라이언트에서 얻은 것을 출력한다.
 			
+			
 			// 사용자가 다음을 클릭하면
 			if(line.equalsIgnoreCase("next")){
 				// 키 'n'의 눌렀다 놓음을 시뮬레이션합니다.
@@ -68,8 +70,10 @@ public class RemoteDroidServer {
 				robot.keyPress(KeyEvent.VK_SPACE);
 				robot.keyRelease(KeyEvent.VK_SPACE);
 			}
+			
+			
 			// 사용자가 mousepad에서 마우스를 움직이면 x, y 형식으로 입력됩니다.
-			else if(line.contains(",")){
+			if(line.contains(",")){
 				float movex=Float.parseFloat(line.split(",")[0]);// x 방향으로 움직임을 추출한다.
 				float movey=Float.parseFloat(line.split(",")[1]);// y 방향으로 움직임을 추출한다.
 				Point point = MouseInfo.getPointerInfo().getLocation(); // 현재 마우스 위치 가져 오기
