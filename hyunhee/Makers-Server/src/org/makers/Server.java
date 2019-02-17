@@ -1,11 +1,10 @@
 package org.makers;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
-
-import javax.swing.*;
 
 import static org.makers.utils.ReceiveMessage.*;
 
