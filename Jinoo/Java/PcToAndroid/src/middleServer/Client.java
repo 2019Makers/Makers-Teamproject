@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 public class Client {
 
 	public static void main(String[] args) {
+		
 		Socket sck = null;
 		BufferedReader br = null;
 		PrintWriter pw = null;
@@ -26,6 +27,7 @@ public class Client {
 			sck = new Socket("localhost", 0525);
 			pw = new PrintWriter(new OutputStreamWriter(sck.getOutputStream()));
 			br = new BufferedReader(new InputStreamReader(sck.getInputStream()));
+			
 			BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("사용할 id를 입력하시오:(아이디숫자4자리/일련번호)");
 			input = keyboard.readLine();
@@ -34,11 +36,14 @@ public class Client {
 			StringTokenizer tokens = new StringTokenizer(input);
 			id = tokens.nextToken("/");
 			number = tokens.nextToken("/");
+
 			
-			System.out.println("==========="+id+"님의 대화창=========");
-			//서버에 id보내기
-			pw.println(id);
+			System.out.println("===========(일련번호: "+number+")"+id+"님의 대화창=========");
+			
+			// 서버에 id보내기
+			pw.println(input);
 			pw.flush();
+			
 			//서버로 부터 계속 읽어오는 스레드 실행
 			InputThread it = new InputThread(sck,br);
 			it.start();
