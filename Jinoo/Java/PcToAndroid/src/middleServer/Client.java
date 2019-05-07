@@ -46,6 +46,7 @@ public class Client {
 			
 			//서버로 부터 계속 읽어오는 스레드 실행
 			InputThread it = new InputThread(sck,br);
+			it.originNumber = number;
 			it.start();
 			String line = null;
 			while((line = keyboard.readLine())!=null)
@@ -84,6 +85,9 @@ class InputThread extends Thread
 {
 	Socket sck = null;
 	BufferedReader br = null;
+	String originNumber;
+	String number;
+	String newLine;
 	public InputThread(Socket sck, BufferedReader br) {
 		super();
 		this.sck = sck;
@@ -96,7 +100,12 @@ class InputThread extends Thread
 			//null값이 아니면 계속 읽어다 출력해주기
 			while((line = br.readLine()) !=null)
 			{
-				System.out.println(line);
+				number = line.substring(0,3);
+				newLine = line.substring(4, line.length());
+				
+				//해결 필요
+				//if(originNumber.equals(number))
+					System.out.println(newLine);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

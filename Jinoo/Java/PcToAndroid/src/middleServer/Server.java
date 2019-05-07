@@ -40,6 +40,7 @@ public class Server {
 class ChatThread extends Thread {
 	// 일련번호를 담을 HashSet(중복 저장x)
 	HashSet<String> numberList = new HashSet<String>();
+	
 	Socket sck;
 	String id;
 	String number;
@@ -96,16 +97,17 @@ class ChatThread extends Thread {
 					break;
 
 				} else {// 아닐 경우 계속 읽어온 데이터를 클라이언트들에게 전송
-					broadcast(id + " : " + line);
+					broadcast(number + id + " : " + line);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
+			// 확인필요
+			broadcast(id + "님이 접속을 종료했습니다…");
 			synchronized (hash) {
 				hash.remove(id);
 			}
-			broadcast(id + "님이 접속을 종료했습니다…");
 			try {
 				sck.close();
 			} catch (IOException e) {
@@ -122,6 +124,7 @@ class ChatThread extends Thread {
 			java.util.Iterator<?> iter = collec.iterator();
 			while (iter.hasNext()) {
 				PrintWriter pw = (PrintWriter) iter.next();
+				
 				pw.println(msg);
 				pw.flush();
 
