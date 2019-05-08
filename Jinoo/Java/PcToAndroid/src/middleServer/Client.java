@@ -100,11 +100,11 @@ class InputThread extends Thread
 			//null값이 아니면 계속 읽어다 출력해주기
 			while((line = br.readLine()) !=null)
 			{
-				number = line.substring(0,3);
+				number = line.substring(0,4);
 				newLine = line.substring(4, line.length());
 				
-				//해결 필요
-				//if(originNumber.equals(number))
+				// 일련번호가 일치한다면 출력
+				if(originNumber.equals(number))
 					System.out.println(newLine);
 			}
 		} catch (IOException e) {

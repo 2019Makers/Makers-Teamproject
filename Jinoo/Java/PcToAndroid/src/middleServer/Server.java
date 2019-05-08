@@ -103,11 +103,11 @@ class ChatThread extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// 확인필요
-			broadcast(id + "님이 접속을 종료했습니다…");
+			
 			synchronized (hash) {
 				hash.remove(id);
 			}
+			broadcast(id + "님이 접속을 종료했습니다…");
 			try {
 				sck.close();
 			} catch (IOException e) {
