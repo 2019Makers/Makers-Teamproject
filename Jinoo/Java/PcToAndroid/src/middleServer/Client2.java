@@ -3,49 +3,55 @@ package middleServer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.StringTokenizer;
 
 public class Client {
 
 	public static void main(String[] args) {
+		
 		Socket sck = null;
 		BufferedReader br = null;
 		PrintWriter pw = null;
 		boolean endFlag = false;
+		// 클라이언트의 입력값을 받을 변수 input
+		String input = null;
+		// 사용자의 아이디  
 		String id = null;
-		String code = null;
+		// 사용자의 일련번호  
+		String number = null;
 		try {
-			//10.10.101.153
-			sck = new Socket("192.168.0.7", 1525);
+			sck = new Socket("localhost", 0525);
 			pw = new PrintWriter(new OutputStreamWriter(sck.getOutputStream()));
 			br = new BufferedReader(new InputStreamReader(sck.getInputStream()));
+			
 			BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
-			//code목록 읽어오기
-			System.out.println("코드읽어오기");
-			String str = br.readLine();
-			System.out.println(str);
-			//방번호 입력받기
-			code = keyboard.readLine();
-			System.out.println("id를 입력하시오:");
-			//id 입력받기
-			id = keyboard.readLine();
-			pw.println(code+"/"+id);//일련번호랑 id 한 스트링에 담아보내기
+			System.out.println("사용할 id를 입력하시오:(아이디숫자4자리/일련번호)");
+			input = keyboard.readLine();
+			
+			// '/'토큰을 이용해 입력 값 나누기
+			StringTokenizer tokens = new StringTokenizer(input);
+			id = tokens.nextToken("/");
+			number = tokens.nextToken("/");
+
+			
+			System.out.println("===========(일련번호: "+number+")"+id+"님의 대화창=========");
+			
+			// 서버에 id보내기
+			pw.println(input);
 			pw.flush();
-			System.out.println("==========="+id+"님의 대화창=========");
-			//서버에 id보내기
-			pw.println(id);
-			pw.flush();
+			
 			//서버로 부터 계속 읽어오는 스레드 실행
 			InputThread it = new InputThread(sck,br);
+			it.originNumber = number;
 			it.start();
 			String line = null;
 			while((line = keyboard.readLine())!=null)
 			{
-				pw.println(code.split("/")[0]+"/"+line);
+				pw.println(line);
 				pw.flush();
 				if(line.equals("quit"))
 				{
@@ -55,8 +61,10 @@ public class Client {
 				}
 			}
 		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
@@ -77,6 +85,9 @@ class InputThread extends Thread
 {
 	Socket sck = null;
 	BufferedReader br = null;
+	String originNumber;
+	String number;
+	String newLine;
 	public InputThread(Socket sck, BufferedReader br) {
 		super();
 		this.sck = sck;
@@ -89,10 +100,15 @@ class InputThread extends Thread
 			//null값이 아니면 계속 읽어다 출력해주기
 			while((line = br.readLine()) !=null)
 			{
-				System.out.println(line);
+				number = line.substring(0,4);
+				newLine = line.substring(4, line.length());
+				
+				// 일련번호가 일치한다면 출력
+				if(originNumber.equals(number))
+					System.out.println(newLine);
 			}
 		} catch (IOException e) {
-			System.out.println("시스템을 종료합니다.");
+			e.printStackTrace();
 		}finally {
 			try {
 				if(sck != null)
