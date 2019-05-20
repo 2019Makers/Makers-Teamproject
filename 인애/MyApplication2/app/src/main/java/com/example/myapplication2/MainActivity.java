@@ -18,9 +18,29 @@ public class MainActivity extends AppCompatActivity {
         goto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext() , RomoteMode.class);
+                Intent intent = new Intent(getApplicationContext() , RemoteMode.class);
                 startActivityForResult(intent , REQUEST_CODE_MENU);
             }
         });
+
+        //Button Register = findViewById(R.id.Register);
+
+        /*
+        Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_verify e = dialog_verify.getInstance().getInstance();
+                e.show(getSupportFragmentManager(),dialog_verify.TAG_EVENT_DIALOG);
+            }
+        });
+
+        Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO : PUSH prompt for verify
+            }
+        });
+        */
+
     }
 }
