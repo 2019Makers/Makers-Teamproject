@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.StringTokenizer;
 
-public class Server {
+public class Server2 {
 	// 서버 넘버
 	static int server_number = 1;
 
@@ -26,7 +26,7 @@ public class Server {
 
 				System.out.println("접속을 기다리는중...");
 				Socket sck = server.accept();
-				ChatThread chatThr = new ChatThread(sck, hash);
+				ChatThread2 chatThr = new ChatThread2(sck, hash);
 				chatThr.start();
 			}
 		} catch (IOException e) {
@@ -37,7 +37,7 @@ public class Server {
 	}
 }
 
-class ChatThread extends Thread {
+class ChatThread2 extends Thread {
 	// 일련번호를 담을 HashSet(중복 저장x)
 	HashSet<String> numberList = new HashSet<String>();
 	
@@ -51,7 +51,7 @@ class ChatThread extends Thread {
 	// 서버 넘버
 	static int server_number = 1;
 
-	public ChatThread(Socket sck, HashMap<String, Object> hash) {
+	public ChatThread2(Socket sck, HashMap<String, Object> hash) {
 		this.sck = sck;
 		this.hash = hash;
 
