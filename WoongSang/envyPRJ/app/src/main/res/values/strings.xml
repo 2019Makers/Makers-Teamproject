@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">envyPRJ</string>
+    <!--Remote Mode Buttons-->
+    <string name="F5">Start</string>
+    <string name="Pointer">Pointer</string>
+    <string name="Basic">Basic</string>
+    <string name="Pen">Pen</string>
+    <string name="Verify">Verify</string>
+    <string name="MoveToRM">Remote</string>
+    <string name="F5_exit">END</string>
+    <string name="EXIT_RM">Exit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

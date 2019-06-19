@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Black">#000000</color>
+    <color name="contrast">#FFD740</color>
+    <color name="white">#FFFFFF</color>
+
+<!-- 예비 색상-->
+    <color name="MainBackground">#424242</color>
+    <color name="IconColor">#FFF7B0</color>
+    <color name="color1">#CAEDEB</color>
+    <color name="color2">#261566</color>
+    <color name="color3">#FFE1E0</color>
+
+</resources>
+
+
